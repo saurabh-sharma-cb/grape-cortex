@@ -64,7 +64,7 @@ module Grape
       end
 
       def match?(input)
-        translator.respond_to?(:forward_match) && translator.forward_match ? input.start_with?(pattern.origin) : pattern.match?(input)
+        translator.respond_to?(:forward_match) && translator.forward_match ? input.to_s.start_with?(pattern.origin) : pattern.match?(input)
       end
 
       def params(input = nil)

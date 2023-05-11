@@ -90,13 +90,13 @@ module Grape
 
           route_options_params = options[:route_options][:params] || {}
           type = route_options_params.dig(key, :type)
-          has_children = route_options_params.keys.any? { |k| k != key && k.start_with?(key) }
+          has_children = route_options_params.keys.any? { |k| k != key && k.to_s.start_with?(key) }
 
           if type == 'Hash' && !has_children
             {}
-          elsif type == 'Array' || type&.start_with?('[') && !type&.include?(',')
+          elsif type == 'Array' || type&.to_s.start_with?('[') && !type&.include?(',')
             []
-          elsif type == 'Set' || type&.start_with?('#<Set')
+          elsif type == 'Set' || type&.to_s.start_with?('#<Set')
             Set.new
           else
             yield

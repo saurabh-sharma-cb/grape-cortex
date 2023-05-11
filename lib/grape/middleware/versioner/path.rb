@@ -44,9 +44,9 @@ module Grape
         private
 
         def mounted_path?(path)
-          return false unless mount_path && path.start_with?(mount_path)
+          return false unless mount_path && path.to_s.start_with?(mount_path)
           rest = path.slice(mount_path.length..-1)
-          rest.start_with?('/') || rest.empty?
+          rest.to_s.start_with?('/') || rest.empty?
         end
 
         def mount_path
