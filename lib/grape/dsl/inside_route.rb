@@ -94,9 +94,9 @@ module Grape
 
           if type == 'Hash' && !has_children
             {}
-          elsif type == 'Array' || type&.to_s.start_with?('[') && !type&.include?(',')
+          elsif type == 'Array' || type.to_s.start_with?('[') && !type&.include?(',')
             []
-          elsif type == 'Set' || type&.to_s.start_with?('#<Set')
+          elsif type == 'Set' || type.to_s.start_with?('#<Set')
             Set.new
           else
             yield
